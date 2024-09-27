@@ -56,7 +56,6 @@ pipeline {
                 sh '''
                     cd learn-jenkins-app
                     npm test
-                    find / -name junit.xml
                 '''
             }
             post {
