@@ -55,14 +55,13 @@ pipeline {
                 unstash 'build-artifacts'
                 sh '''
                     cd learn-jenkins-app
-                    mkdir -p jest-results
                     npm test
                     find / -name junit.xml
                 '''
             }
             post {
                 always {
-                    junit 'learn-jenkins-app/jest-results/junit.xml'
+                    junit 'learn-jenkins-app/test-results/junit.xml'
                 }
             }
         }
