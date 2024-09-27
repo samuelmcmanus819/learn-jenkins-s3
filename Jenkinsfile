@@ -16,11 +16,11 @@ pipeline {
                 }
             }
             steps {
-                sh ```
+                sh '''
                     cd learn-jenkins-app
                     npm install
                     npm run build
-                ```
+                '''
                 stash includes: 'learn-jenkins-app/build/**, learn-jenkins-app/node_modules/**, learn-jenkins-app/package-lock.json', name: 'build-artifacts'
             }
         }
@@ -32,11 +32,11 @@ pipeline {
                 }
             }
             steps {
-                sh ```
+                sh '''
                     cd learn-jenkins-app
                     mkdir -p scan-results
                     npm audit --json > scan-results/dependency-scan.json || true
-                ```
+                '''
             }
             post {
                 always {
@@ -53,11 +53,11 @@ pipeline {
             }
             steps {
                 unstash 'build-artifacts'
-                sh ```
+                sh '''
                     cd learn-jenkins-app
                     mkdir -p jest-results
                     npm test
-                ```
+                '''
             }
             post {
                 always {
