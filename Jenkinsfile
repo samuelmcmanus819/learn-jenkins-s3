@@ -57,6 +57,7 @@ pipeline {
                     cd learn-jenkins-app
                     mkdir -p jest-results
                     npm test
+                    find / -name jest-results
                 '''
             }
             post {
