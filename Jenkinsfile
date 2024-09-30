@@ -89,11 +89,7 @@ pipeline {
             }
             steps {
                 unstash 'build-artifacts'
-                sh '''
-                    # Output the AWS environment variables
-                    echo "AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID" > junk2
-                    echo "AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY"
-                    
+                sh '''                 
                     # Install AWS CLI
                     apk add --no-cache aws-cli
                     export AWS_DEFAULT_REGION=us-east-1
